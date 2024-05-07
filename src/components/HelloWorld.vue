@@ -3,8 +3,13 @@ import { onMounted, ref, toRaw } from 'vue'
 
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs'
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.worker.min.mjs";
+// pdfjsLib.GlobalWorkerOptions.workerSrc =
+//   "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.worker.min.mjs";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString()
 
 
 defineProps<{ msg: string }>()
